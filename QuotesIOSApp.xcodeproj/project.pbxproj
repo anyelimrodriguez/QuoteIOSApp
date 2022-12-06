@@ -7,16 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		635BB651293EEDF400866A60 /* ShowQuotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635BB650293EEDF400866A60 /* ShowQuotesViewController.swift */; };
+		639962332922F5DB00832058 /* MovieCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639962322922F5DB00832058 /* MovieCategoriesViewController.swift */; };
 		63CC772E28F4C32200CC0B49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC772D28F4C32200CC0B49 /* AppDelegate.swift */; };
 		63CC773028F4C32200CC0B49 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC772F28F4C32200CC0B49 /* SceneDelegate.swift */; };
 		63CC773228F4C32200CC0B49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC773128F4C32200CC0B49 /* ViewController.swift */; };
 		63CC773528F4C32200CC0B49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63CC773328F4C32200CC0B49 /* Main.storyboard */; };
 		63CC773728F4C32300CC0B49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63CC773628F4C32300CC0B49 /* Assets.xcassets */; };
 		63CC773A28F4C32300CC0B49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63CC773828F4C32300CC0B49 /* LaunchScreen.storyboard */; };
+		63ED3735292C1E64008198A7 /* RandomAdviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ED3734292C1E63008198A7 /* RandomAdviceViewController.swift */; };
+		63ED3737292C2158008198A7 /* AdviceResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ED3736292C2158008198A7 /* AdviceResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		63CC772A28F4C32200CC0B49 /* SongLyricCaptions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SongLyricCaptions.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		635BB650293EEDF400866A60 /* ShowQuotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowQuotesViewController.swift; sourceTree = "<group>"; };
+		639962322922F5DB00832058 /* MovieCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCategoriesViewController.swift; sourceTree = "<group>"; };
+		63CC772A28F4C32200CC0B49 /* QuotesIOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuotesIOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63CC772D28F4C32200CC0B49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63CC772F28F4C32200CC0B49 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		63CC773128F4C32200CC0B49 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +30,8 @@
 		63CC773628F4C32300CC0B49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63CC773928F4C32300CC0B49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63CC773B28F4C32300CC0B49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63ED3734292C1E63008198A7 /* RandomAdviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAdviceViewController.swift; sourceTree = "<group>"; };
+		63ED3736292C2158008198A7 /* AdviceResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +48,7 @@
 		63CC772128F4C32100CC0B49 = {
 			isa = PBXGroup;
 			children = (
-				63CC772C28F4C32200CC0B49 /* SongLyricCaptions */,
+				63CC772C28F4C32200CC0B49 /* QuotesApp */,
 				63CC772B28F4C32200CC0B49 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,12 +56,12 @@
 		63CC772B28F4C32200CC0B49 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				63CC772A28F4C32200CC0B49 /* SongLyricCaptions.app */,
+				63CC772A28F4C32200CC0B49 /* QuotesIOSApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		63CC772C28F4C32200CC0B49 /* SongLyricCaptions */ = {
+		63CC772C28F4C32200CC0B49 /* QuotesApp */ = {
 			isa = PBXGroup;
 			children = (
 				63CC772D28F4C32200CC0B49 /* AppDelegate.swift */,
@@ -63,16 +71,20 @@
 				63CC773628F4C32300CC0B49 /* Assets.xcassets */,
 				63CC773828F4C32300CC0B49 /* LaunchScreen.storyboard */,
 				63CC773B28F4C32300CC0B49 /* Info.plist */,
+				639962322922F5DB00832058 /* MovieCategoriesViewController.swift */,
+				63ED3734292C1E63008198A7 /* RandomAdviceViewController.swift */,
+				63ED3736292C2158008198A7 /* AdviceResult.swift */,
+				635BB650293EEDF400866A60 /* ShowQuotesViewController.swift */,
 			);
-			path = SongLyricCaptions;
+			path = QuotesApp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		63CC772928F4C32200CC0B49 /* SongLyricCaptions */ = {
+		63CC772928F4C32200CC0B49 /* QuotesIOSApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 63CC773E28F4C32300CC0B49 /* Build configuration list for PBXNativeTarget "SongLyricCaptions" */;
+			buildConfigurationList = 63CC773E28F4C32300CC0B49 /* Build configuration list for PBXNativeTarget "QuotesIOSApp" */;
 			buildPhases = (
 				63CC772628F4C32200CC0B49 /* Sources */,
 				63CC772728F4C32200CC0B49 /* Frameworks */,
@@ -82,9 +94,9 @@
 			);
 			dependencies = (
 			);
-			name = SongLyricCaptions;
+			name = QuotesIOSApp;
 			productName = SongLyricCaptions;
-			productReference = 63CC772A28F4C32200CC0B49 /* SongLyricCaptions.app */;
+			productReference = 63CC772A28F4C32200CC0B49 /* QuotesIOSApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +114,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 63CC772528F4C32100CC0B49 /* Build configuration list for PBXProject "SongLyricCaptions" */;
+			buildConfigurationList = 63CC772528F4C32100CC0B49 /* Build configuration list for PBXProject "QuotesIOSApp" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +127,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				63CC772928F4C32200CC0B49 /* SongLyricCaptions */,
+				63CC772928F4C32200CC0B49 /* QuotesIOSApp */,
 			);
 		};
 /* End PBXProject section */
@@ -140,7 +152,11 @@
 			files = (
 				63CC773228F4C32200CC0B49 /* ViewController.swift in Sources */,
 				63CC772E28F4C32200CC0B49 /* AppDelegate.swift in Sources */,
+				635BB651293EEDF400866A60 /* ShowQuotesViewController.swift in Sources */,
+				63ED3737292C2158008198A7 /* AdviceResult.swift in Sources */,
 				63CC773028F4C32200CC0B49 /* SceneDelegate.swift in Sources */,
+				63ED3735292C1E64008198A7 /* RandomAdviceViewController.swift in Sources */,
+				639962332922F5DB00832058 /* MovieCategoriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +305,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3MSXC5C7J3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SongLyricCaptions/Info.plist;
+				INFOPLIST_FILE = QuotesApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -317,7 +333,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3MSXC5C7J3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SongLyricCaptions/Info.plist;
+				INFOPLIST_FILE = QuotesApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -339,7 +355,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		63CC772528F4C32100CC0B49 /* Build configuration list for PBXProject "SongLyricCaptions" */ = {
+		63CC772528F4C32100CC0B49 /* Build configuration list for PBXProject "QuotesIOSApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63CC773C28F4C32300CC0B49 /* Debug */,
@@ -348,7 +364,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		63CC773E28F4C32300CC0B49 /* Build configuration list for PBXNativeTarget "SongLyricCaptions" */ = {
+		63CC773E28F4C32300CC0B49 /* Build configuration list for PBXNativeTarget "QuotesIOSApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63CC773F28F4C32300CC0B49 /* Debug */,
