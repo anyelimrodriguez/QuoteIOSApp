@@ -10,8 +10,10 @@ import UIKit
 class ShowQuotesViewController: UIViewController {
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var quoteLabel: UILabel!
-
+    @IBOutlet var authorLabel: UILabel!
     var currentAPIQuote = ShowQuoteResult()
+    var currentQuote = ""
+    var currentAuthor = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,13 +60,15 @@ class ShowQuotesViewController: UIViewController {
         }
         // 5
         dataTask.resume()
-        if(currentAPIQuote.quote==nil)
+        if(currentAPIQuote.quote==nil||currentAPIQuote.quote=="")
         {
             print("EMPTY QUOTE")
         }
         else
         {
-            quoteLabel.text=currentAPIQuote.quote
+            //currentQuote = "\(currentAPIQuote.quote)"
+            quoteLabel.text="\""+currentAPIQuote.quote!+"\""
+            authorLabel.text="-"+currentAPIQuote.author!
             //print(currentAPIQuote[0].quote!)
         }
     }
@@ -97,7 +101,18 @@ class ShowQuotesViewController: UIViewController {
       return nil }
   }
     
+    @IBAction func shareQuote(_ sender: UIBarButtonItem) {
+        let text = quoteLabel.text
+        let textShare = [text]
+        let activityViewController = UIActivityViewController(activityItems: textShare as [Any] , applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
+    }
     
+    @IBAction func copyQuote(sender: UIBarButtonItem){
+        let text = quoteLabel.text
+        UIPasteboard.general.string = text
+    }
 
     /*
     // MARK: - Navigation
