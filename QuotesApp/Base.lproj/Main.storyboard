@@ -75,6 +75,15 @@
                                 <color key="textColor" red="0.71372550729999995" green="0.1843137443" blue="0.2117646933" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4c-b3-Eqa">
+                                <rect key="frame" x="122" y="720" width="147" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="SHOW QUOTES"/>
+                                <connections>
+                                    <segue destination="DrD-3e-dr9" kind="show" id="js4-YJ-LfY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mHH-R2-Ig6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -130,7 +139,45 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="32d-fg-rdm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5287.6923076923076" y="9.9526066350710902"/>
+            <point key="canvasLocation" x="4598" y="216"/>
+        </scene>
+        <!--Show Quotes View Controller-->
+        <scene sceneID="KLa-mq-OAC">
+            <objects>
+                <viewController id="DrD-3e-dr9" customClass="ShowQuotesViewController" customModule="QuotesIOSApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E01-7h-b2L">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggz-ec-LAY">
+                                <rect key="frame" x="93" y="512" width="204" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="API CALL"/>
+                                <connections>
+                                    <action selector="getNewQuote" destination="DrD-3e-dr9" eventType="touchUpInside" id="Iy7-hE-lsS"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HI :)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" minimumFontSize="18" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bvi-YC-elh">
+                                <rect key="frame" x="108" y="292" width="180" height="115"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ovL-I3-UTJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xVL-3u-8qq"/>
+                    <connections>
+                        <outlet property="nextButton" destination="Ggz-ec-LAY" id="GcY-i3-TLu"/>
+                        <outlet property="quoteLabel" destination="bvi-YC-elh" id="sjl-eK-Se9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ehn-W0-Zku" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4913.8461538461534" y="937.67772511848341"/>
         </scene>
         <!--WYDK-->
         <scene sceneID="xmt-p2-0ax">
@@ -195,7 +242,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bP5-ZC-J8v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4188" y="763"/>
+            <point key="canvasLocation" x="3566" y="938"/>
         </scene>
         <!--Home-->
         <scene sceneID="6z9-CB-dLT">
