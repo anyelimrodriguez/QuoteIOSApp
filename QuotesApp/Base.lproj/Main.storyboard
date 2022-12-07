@@ -106,22 +106,26 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCategory" id="2Fr-HH-y3h">
-                                <rect key="frame" x="0.0" y="50" width="390" height="44"/>
+                                <rect key="frame" x="0.0" y="50" width="390" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Fr-HH-y3h" id="vWm-wr-p9n">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7p-XD-8PI">
-                                            <rect key="frame" x="20" y="10.999999999999998" width="42" height="21.333333333333329"/>
+                                            <rect key="frame" x="20" y="11" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="T7p-XD-8PI" secondAttribute="trailing" constant="308" id="3Ij-ot-dQt"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="T7p-XD-8PI" secondAttribute="bottom" constant="0.67000000000000004" id="3Ur-fx-BMd"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="T7p-XD-8PI" secondAttribute="bottom" constant="0.67000000000000004" id="HW1-4r-W9E"/>
+                                        <constraint firstItem="T7p-XD-8PI" firstAttribute="leading" secondItem="vWm-wr-p9n" secondAttribute="leadingMargin" id="XFd-lp-wRg"/>
                                         <constraint firstItem="T7p-XD-8PI" firstAttribute="leading" secondItem="vWm-wr-p9n" secondAttribute="leadingMargin" id="XpH-nW-nOb"/>
+                                        <constraint firstItem="T7p-XD-8PI" firstAttribute="top" secondItem="vWm-wr-p9n" secondAttribute="topMargin" id="kGA-Hw-xGd"/>
                                         <constraint firstItem="T7p-XD-8PI" firstAttribute="top" secondItem="vWm-wr-p9n" secondAttribute="topMargin" id="tvf-cd-JEH"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -166,7 +170,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6k-NU-JCn">
-                                <rect key="frame" x="238" y="595" width="105" height="44"/>
+                                <rect key="frame" x="238" y="595" width="104" height="43"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                 <items>
@@ -239,7 +243,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7DM-t5-Lp5">
-                                <rect key="frame" x="238" y="595" width="105" height="44"/>
+                                <rect key="frame" x="237" y="594" width="106" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                 <items>

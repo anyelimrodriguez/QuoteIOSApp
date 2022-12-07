@@ -13,9 +13,12 @@ class MovieCategoriesViewController: UITableViewController {
     let row2text = "Learn iOS development"
     let row3text = "Soccer practice"
     let row4text = "Eat ice cream"
+    
+    var showTitles = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        getShowTitles()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -70,6 +73,85 @@ class MovieCategoriesViewController: UITableViewController {
     return cell
         
     }
+    
+    
+    func apiURL() -> URL {
+      let urlString = String(
+        format: "https://web-series-quotes-api.deta.dev/series")
+      let url = URL(string: urlString)
+      return url!
+    }
+    
+    func performAPIRequest(with url: URL) -> Data? {
+      do {
+       return try Data(contentsOf: url)
+      } catch {
+          print("Download Error: \(error.localizedDescription)")
+          return nil
+        }
+    }
+  //JSON response is an array of strings
+  func parse(data: Data) -> [String]? {
+    do {
+      let decoder = JSONDecoder()
+      let result = try decoder.decode(
+        [String].self, from: data)
+        return result.self //.showTitlesArr
+    } catch {
+      print("JSON Error: \(error)")
+      return []
+    }
+  }
+    
+    /*@IBAction*/ func getShowTitles(){
+        //bool retrieved = true
+
+        let url = apiURL()
+        print("URL: '\(url)'")
+        
+        // Get a shared isntance which uses def config
+        let session = URLSession.shared
+        
+        // data tasks are for fetching the contents of a given URL
+        let dataTask = session.dataTask(with: url) { [self]data, response,
+        error in // errors can happen when server can't be reached
+          if let error = error {
+            print("Failure! \(error.localizedDescription)")
+          } else if let httpResponse = response as? HTTPURLResponse,
+            httpResponse.statusCode == 200 { //HTTP responsse code 200 means success
+            print("SUCCESS")
+            //Unwrap optional obj from data and turns response into show result object
+            if let data = data {
+                //if it fails to parse data, return
+                guard let parseData = self.parse(data: data) else {return}
+                self.showTitles = parseData
+              DispatchQueue.main.async {
+                //self.isLoading = false
+                //self.tableView.reloadData()
+              }
+            print(showTitles[0])
+              return
+            }
+          } else {
+            print("Failure! \(response!)")
+          }
+        }
+        // 5
+        dataTask.resume()
+        if(showTitles.isEmpty)
+        {
+            print("EMPTY QUOTE")
+        }
+        else
+        {
+            //currentQuote = "\(currentAPIQuote.quote)"
+            //quoteLabel.text="\""+currentAPIQuote.quote!+"\""
+            //authorLabel.text="-"+currentAPIQuote.author!
+            //viewDidLoad()
+            print(showTitles[0])
+        }
+    }
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
