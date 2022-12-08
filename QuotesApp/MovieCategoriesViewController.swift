@@ -13,12 +13,6 @@ protocol SendShowTitleDelegateProtocol {
 }
 
 class MovieCategoriesViewController: UITableViewController {
-    let row0text = "Walk the dog"
-    let row1text = "Brush teeth"
-    let row2text = "Learn iOS development"
-    let row3text = "Soccer practice"
-    let row4text = "Eat ice cream"
-    
     var showTitles = [String]()
     var howManyTimesRun = 0
     
@@ -34,14 +28,12 @@ class MovieCategoriesViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    // MARK: - Table view data source
-
-    //override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-      //  return 0
-   // }
-
     // MARK: - Table View Data Source
+    /*
+        This method creates the number of rows needed for the table
+        1, if haven't retrieved the data from API
+        len of showTitle array if have
+     */
     override func tableView(
       _ tableView: UITableView,
       numberOfRowsInSection section: Int
@@ -52,6 +44,7 @@ class MovieCategoriesViewController: UITableViewController {
         return 1
     }
     
+    /* This method is called to build each cell for every row needed*/
     override func tableView(
       _ tableView: UITableView,
       cellForRowAt indexPath: IndexPath
@@ -82,12 +75,11 @@ class MovieCategoriesViewController: UITableViewController {
         }
         return cell
     }
-    
+    //TODO: Delegate implementation?
     override func tableView(
       _ tableView: UITableView,
       didSelectRowAt indexPath: IndexPath
     ) {
-        //print("CALLED THIS")
         tableView.deselectRow(at: indexPath, animated: true)
         
         if(self.delegate != nil) {

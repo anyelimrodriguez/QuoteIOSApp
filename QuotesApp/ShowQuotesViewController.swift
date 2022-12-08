@@ -11,6 +11,7 @@ class ShowQuotesViewController: UIViewController {
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var quoteLabel: UILabel!
     @IBOutlet var authorLabel: UILabel!
+    
     var currentAPIQuote = ShowQuoteResult()
     var currentQuote = ""
     var currentAuthor = ""
@@ -30,7 +31,7 @@ class ShowQuotesViewController: UIViewController {
     
     //The first time the show quote screen opens
     func startQuotes(){
-        quoteLabel.text = "It's okay to not be okay all the time."
+        quoteLabel.text = "Everybody lies."
     }
     
     // TODO: Possible delegate
@@ -75,6 +76,8 @@ class ShowQuotesViewController: UIViewController {
         if(currentAPIQuote.quote==nil||currentAPIQuote.quote=="")
         {
             print("EMPTY QUOTE")
+            quoteLabel.text = "Everybody Lies."
+            authorLabel.text = "House"
         }
         else
         {
