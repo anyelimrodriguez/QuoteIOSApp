@@ -178,12 +178,12 @@
                                 <items>
                                     <barButtonItem title="Copy" image="clipboard.fill" catalog="system" id="fWS-yt-C8z">
                                         <connections>
-                                            <action selector="copyTextWithSender:" destination="DrD-3e-dr9" id="6Rb-HC-9lF"/>
+                                            <action selector="copyQuoteWithSender:" destination="DrD-3e-dr9" id="Uvr-af-V9T"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem title="Item" image="square.and.arrow.up" catalog="system" id="CqR-YF-oPd">
                                         <connections>
-                                            <action selector="shareText:" destination="DrD-3e-dr9" id="PkM-VZ-dsR"/>
+                                            <action selector="shareQuote:" destination="DrD-3e-dr9" id="nVG-D5-hSh"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>

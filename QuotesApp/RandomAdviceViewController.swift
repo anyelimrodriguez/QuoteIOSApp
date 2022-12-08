@@ -10,7 +10,6 @@ import UIKit
 class RandomAdviceViewController: UIViewController {
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var adviceLabel: UILabel!
-    //@IBOutlet var shareButton: UIBarButtonItem!
     
     var currentAdvice = ""
     var randomVal = 0
@@ -22,12 +21,14 @@ class RandomAdviceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startAdvice()
+        getNewAdvice()
         // Do any additional setup after loading the view.
     }
     
     //The first time the advice screen opens
     func startAdvice(){
-        adviceLabel.text = "It's okay to not be okay all the time."
+        randomVal = Int.random(in: 0...advice.count-1)
+        adviceLabel.text = advice[randomVal]
     }
     
     /*func updateAdvice(){
@@ -65,7 +66,6 @@ class RandomAdviceViewController: UIViewController {
                 //self.isLoading = false
                 //self.tableView.reloadData()
               }
-                
               return
             }
           } else {
@@ -74,6 +74,8 @@ class RandomAdviceViewController: UIViewController {
         }
         // 5
         dataTask.resume()
+        
+        //If not able to retrieve quote from API, use my array of advice
         if(currentAPIAdvice.advice=="")
         {
             randomVal = Int.random(in: 0...advice.count-1)
@@ -86,6 +88,7 @@ class RandomAdviceViewController: UIViewController {
         }
     }
     
+    //MARK: Copy and Share Tools
     /*This method allows user to share the text in advice label using the activity view controller.
      ActivityView controller is the pop up that gives you options to share
     */
@@ -111,26 +114,24 @@ class RandomAdviceViewController: UIViewController {
     }
     
     func performAPIRequest(with url: URL) -> Data? {
-      do {
-       return try Data(contentsOf: url)
-      } catch {
-       print("Download Error: \(error.localizedDescription)")
-    return nil
+        do {
+            return try Data(contentsOf: url)
+        } catch {
+            print("Download Error: \(error.localizedDescription)")
+            return nil
         }
     }
     
-  func parse(data: Data) -> AdviceResult? {
-    do {
-      let decoder = JSONDecoder()
-      let result = try decoder.decode(
-        ResultSlip.self, from: data)
-        return result.slip
-    } catch {
-      print("JSON Error: \(error)")
-      return nil }
-  }
-    
-    
+    func parse(data: Data) -> AdviceResult? {
+        do {
+            let decoder = JSONDecoder()
+            let result = try decoder.decode(
+                ResultSlip.self, from: data)
+            return result.slip
+        } catch {
+            print("JSON Error: \(error)")
+            return nil }
+    }
     
     /*
     // MARK: - Navigation

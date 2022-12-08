@@ -111,7 +111,13 @@ class MovieCategoriesViewController: UITableViewController {
         let showQuotesViewController = segue.destination as! ShowQuotesViewController
         
         // Pass the query param (which is the show title at clicked index)
-        showQuotesViewController.queryParam = showTitles[index ?? 0]
+        if(!showTitles.isEmpty){
+            showQuotesViewController.queryParam = showTitles[index ?? 0]
+        }
+        else{
+            showQuotesViewController.queryParam = ""
+        }
+            
     }
     
     //MARK: API call

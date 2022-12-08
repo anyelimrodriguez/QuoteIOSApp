@@ -74,10 +74,10 @@
 				63CC773828F4C32300CC0B49 /* LaunchScreen.storyboard */,
 				63CC773B28F4C32300CC0B49 /* Info.plist */,
 				639962322922F5DB00832058 /* MovieCategoriesViewController.swift */,
-				63ED3734292C1E63008198A7 /* RandomAdviceViewController.swift */,
-				63ED3736292C2158008198A7 /* AdviceResult.swift */,
 				634550D2293F0039004A5E49 /* ShowQuotesViewController.swift */,
 				634550D0293EFAD8004A5E49 /* ShowQuoteResult.swift */,
+				63ED3734292C1E63008198A7 /* RandomAdviceViewController.swift */,
+				63ED3736292C2158008198A7 /* AdviceResult.swift */,
 			);
 			path = QuotesApp;
 			sourceTree = "<group>";
