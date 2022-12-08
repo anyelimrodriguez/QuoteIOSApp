@@ -106,21 +106,20 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCategory" id="2Fr-HH-y3h">
-                                <rect key="frame" x="0.0" y="50" width="390" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="50" width="390" height="51.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Fr-HH-y3h" id="vWm-wr-p9n">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="51.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7p-XD-8PI">
-                                            <rect key="frame" x="20" y="11" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7p-XD-8PI">
+                                            <rect key="frame" x="20.000000000000004" y="11.000000000000002" width="54.333333333333343" height="28.666666666666671"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                            <color key="textColor" systemColor="placeholderTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="T7p-XD-8PI" secondAttribute="trailing" constant="308" id="3Ij-ot-dQt"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="T7p-XD-8PI" secondAttribute="bottom" constant="0.67000000000000004" id="3Ur-fx-BMd"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="T7p-XD-8PI" secondAttribute="bottom" constant="0.67000000000000004" id="HW1-4r-W9E"/>
                                         <constraint firstItem="T7p-XD-8PI" firstAttribute="leading" secondItem="vWm-wr-p9n" secondAttribute="leadingMargin" id="XFd-lp-wRg"/>
@@ -129,6 +128,9 @@
                                         <constraint firstItem="T7p-XD-8PI" firstAttribute="top" secondItem="vWm-wr-p9n" secondAttribute="topMargin" id="tvf-cd-JEH"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="DrD-3e-dr9" kind="show" identifier="ShowQuotesSegue" id="pEX-k8-mmX"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -143,9 +145,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="32d-fg-rdm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4598" y="216"/>
+            <point key="canvasLocation" x="4712" y="123"/>
         </scene>
-        <!--Show Quotes View Controller-->
+        <!--WYDK-->
         <scene sceneID="KLa-mq-OAC">
             <objects>
                 <viewController id="DrD-3e-dr9" customClass="ShowQuotesViewController" customModule="QuotesIOSApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -170,7 +172,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6k-NU-JCn">
-                                <rect key="frame" x="238" y="595" width="104" height="43"/>
+                                <rect key="frame" x="237" y="594" width="104" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                 <items>
@@ -203,7 +205,7 @@
                         <viewLayoutGuide key="safeArea" id="ovL-I3-UTJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xVL-3u-8qq"/>
+                    <navigationItem key="navigationItem" title="WYDK" prompt="Quotes from Shows" id="xVL-3u-8qq"/>
                     <connections>
                         <outlet property="authorLabel" destination="4S2-pY-Zkg" id="9oA-aJ-WWh"/>
                         <outlet property="nextButton" destination="Ggz-ec-LAY" id="GcY-i3-TLu"/>
@@ -243,7 +245,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7DM-t5-Lp5">
-                                <rect key="frame" x="237" y="594" width="106" height="44"/>
+                                <rect key="frame" x="236" y="593" width="107" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                 <items>
@@ -303,6 +305,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="3JQ-Jm-AK6"/>
+        <segue reference="pEX-k8-mmX"/>
         <segue reference="iLO-n5-BcX"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -311,6 +314,9 @@
         <image name="person.2.fill" catalog="system" width="128" height="81"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="tv" catalog="system" width="128" height="95"/>
+        <systemColor name="placeholderTextColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

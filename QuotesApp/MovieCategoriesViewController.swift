@@ -7,6 +7,11 @@
 
 import UIKit
 
+//TO-DO
+protocol SendShowTitleDelegateProtocol {
+    func sendShowTitleToShowQuotesScreen(showTitle: String)
+}
+
 class MovieCategoriesViewController: UITableViewController {
     let row0text = "Walk the dog"
     let row1text = "Brush teeth"
@@ -15,6 +20,9 @@ class MovieCategoriesViewController: UITableViewController {
     let row4text = "Eat ice cream"
     
     var showTitles = [String]()
+    var howManyTimesRun = 0
+    
+    var delegate: SendShowTitleDelegateProtocol? = nil //TO-DO
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,43 +46,75 @@ class MovieCategoriesViewController: UITableViewController {
       _ tableView: UITableView,
       numberOfRowsInSection section: Int
     ) -> Int {
-    return 9
+        if(showTitles.count>1){
+            return showTitles.count //The len of the array is the amount of rows
+        }
+        return 1
     }
     
     override func tableView(
       _ tableView: UITableView,
       cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCell(
+        let cell = tableView.dequeueReusableCell(
         withIdentifier: "MovieCategory",
         for: indexPath)
-      // Add the following code
-      let label = cell.viewWithTag(1000) as! UILabel
-      if indexPath.row == 0 {
-        label.text = "Random Quote from Any"
-      } else if indexPath.row == 1 {
-        label.text = "Mindhunter"
-      } else if indexPath.row == 2 {
-        label.text = "True Detective"
-      } else if indexPath.row == 3 {
-        label.text = "Soprano"
-      } else if indexPath.row == 4 {
-        label.text = "The Wire"
-      } else if indexPath.row == 5 {
-          label.text = "Sillicon Valley"
-      } else if indexPath.row == 6 {
-          label.text = "The Office"
-      } else if indexPath.row == 7 {
-          label.text = "Space Force"
-      } else if indexPath.row == 8 {
-          label.text = "Forrest Gump"
-      }
         
-    return cell
+        let label = cell.viewWithTag(1000) as! UILabel
         
+        //If already retrieved the show titles, make the current cell display the current show title
+        if(showTitles.count>0)
+        {
+            print(showTitles.count)
+            let currentShowTitle = showTitles[indexPath.row]
+            label.text = currentShowTitle.capitalized
+            label.adjustsFontSizeToFitWidth = true
+            label.font = UIFont.boldSystemFont(ofSize: 22)
+            label.textColor = UIColor(red: 182/255, green: 47/255, blue: 54/255, alpha: 1)
+        }
+        
+        //Otherwise, show a loading screen
+        else
+        {
+            if indexPath.row == 0 {
+              label.text = "Loading..."
+            }
+        }
+        return cell
     }
     
+    override func tableView(
+      _ tableView: UITableView,
+      didSelectRowAt indexPath: IndexPath
+    ) {
+        //print("CALLED THIS")
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if(self.delegate != nil) {
+            let showTitleToSend = showTitles[indexPath.row]
+            self.delegate?.sendShowTitleToShowQuotesScreen(showTitle: showTitleToSend)
+            dismiss(animated: true, completion: nil)
+        }
+    }
     
+    /*
+     This method prepares the transition between this view controller and the show quotes
+     view controller by sending the show title for the selected row to the show quotes
+     view controller so that it can be used as the query parameter for the API call
+    */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the row that was just tapped
+        let indexPath = tableView.indexPathForSelectedRow
+        let index = indexPath?.row
+        
+        // The destination view controller is the show quotes view controller
+        let showQuotesViewController = segue.destination as! ShowQuotesViewController
+        
+        // Pass the query param (which is the show title at clicked index)
+        showQuotesViewController.queryParam = showTitles[index ?? 0]
+    }
+    
+    //MARK: API call
     func apiURL() -> URL {
       let urlString = String(
         format: "https://web-series-quotes-api.deta.dev/series")
@@ -84,32 +124,30 @@ class MovieCategoriesViewController: UITableViewController {
     
     func performAPIRequest(with url: URL) -> Data? {
       do {
-       return try Data(contentsOf: url)
+          return try Data(contentsOf: url)
       } catch {
           print("Download Error: \(error.localizedDescription)")
           return nil
+      }
+    }
+    //JSON response is an array of strings
+    func parse(data: Data) -> [String]? {
+        do {
+          let decoder = JSONDecoder()
+          let result = try decoder.decode(
+            [String].self, from: data)
+            return result.self //.showTitlesArr
+        } catch {
+          print("JSON Error: \(error)")
+          return []
         }
-    }
-  //JSON response is an array of strings
-  func parse(data: Data) -> [String]? {
-    do {
-      let decoder = JSONDecoder()
-      let result = try decoder.decode(
-        [String].self, from: data)
-        return result.self //.showTitlesArr
-    } catch {
-      print("JSON Error: \(error)")
-      return []
-    }
-  }
+      }
     
-    /*@IBAction*/ func getShowTitles(){
-        //bool retrieved = true
-
+    func getShowTitles(){
         let url = apiURL()
         print("URL: '\(url)'")
         
-        // Get a shared isntance which uses def config
+        // Get a shared instance which uses def config
         let session = URLSession.shared
         
         // data tasks are for fetching the contents of a given URL
@@ -127,10 +165,10 @@ class MovieCategoriesViewController: UITableViewController {
                 self.showTitles = parseData
               DispatchQueue.main.async {
                 //self.isLoading = false
-                //self.tableView.reloadData()
+                self.tableView.reloadData()
               }
-            print(showTitles[0])
-              return
+                //print(showTitles[0])
+                return
             }
           } else {
             print("Failure! \(response!)")
@@ -140,7 +178,7 @@ class MovieCategoriesViewController: UITableViewController {
         dataTask.resume()
         if(showTitles.isEmpty)
         {
-            print("EMPTY QUOTE")
+            print("Not Ready Yet")
         }
         else
         {
@@ -148,6 +186,7 @@ class MovieCategoriesViewController: UITableViewController {
             //quoteLabel.text="\""+currentAPIQuote.quote!+"\""
             //authorLabel.text="-"+currentAPIQuote.author!
             //viewDidLoad()
+            tableView.reloadData()
             print(showTitles[0])
         }
     }

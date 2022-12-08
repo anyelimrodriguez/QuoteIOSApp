@@ -15,9 +15,16 @@ class ShowQuotesViewController: UIViewController {
     var currentQuote = ""
     var currentAuthor = ""
     
+    var queryParam = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("QueryParam:\(queryParam)")
+        
+        getNewQuote()
         startQuotes()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -26,9 +33,14 @@ class ShowQuotesViewController: UIViewController {
         quoteLabel.text = "It's okay to not be okay all the time."
     }
     
+    // TODO: Possible delegate
+    func sendShowTitleToShowQuotesScreen(showTitle: String) {
+        self.queryParam = showTitle
+        print("QueryParam:\(queryParam)")
+    }
+    
+    // MARK: Retrieve Quotes Method
     @IBAction func getNewQuote(){
-        //bool retrieved = true
-
         let url = apiURL()
         print("URL: '\(url)'")
         
@@ -74,33 +86,45 @@ class ShowQuotesViewController: UIViewController {
     }
     
     // MARK: - Helper Methods
+    
+    /*
+     The URL for the API is the base endpoint /quote with the
+     query parameter being the show the user selected from the table view
+    */
     func apiURL() -> URL {
-      let urlString = String(
-        format: "https://web-series-quotes-api.deta.dev/quote/?series=breaking_bad")
+      let urlString = "https://web-series-quotes-api.deta.dev/quote/?series="+queryParam
+      /*let urlString = String(
+        format: "https://web-series-quotes-api.deta.dev/quote/?series=", queryParam)*/
       let url = URL(string: urlString)
       return url!
     }
     
+    /*
+     This function tries to perform the API request w/ the url from apiURL
+    */
+    
     func performAPIRequest(with url: URL) -> Data? {
       do {
-       return try Data(contentsOf: url)
+          return try Data(contentsOf: url)
       } catch {
-       print("Download Error: \(error.localizedDescription)")
-    return nil
-        }
+          print("Download Error: \(error.localizedDescription)")
+          return nil
+      }
     }
+    
   //JSON response is an array w/ showquoteresult inside
   func parse(data: Data) -> ShowQuoteResult? {
     do {
       let decoder = JSONDecoder()
       let result = try decoder.decode(
         [ShowQuoteResult].self, from: data)
-        return result[0].self //Response is an array with 1 showresult obj inside 
+        return result[0].self //Response is an array with 1 showquoteresult obj inside
     } catch {
       print("JSON Error: \(error)")
       return nil }
   }
     
+    // MARK: - Copy and Share Methods
     @IBAction func shareQuote(_ sender: UIBarButtonItem) {
         let text = quoteLabel.text
         let textShare = [text]
