@@ -18,12 +18,24 @@ class ShowQuotesViewController: UIViewController {
     
     var queryParam = ""
     
+    var defaults = UserPreferences.shared.defaults
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print("QueryParam:\(queryParam)")
         
         getNewQuote()
+        
+        var txtColor = defaults.array(forKey: "QuotesTextColor")
+        
+        if(txtColor == nil){
+            print("Text Color has not been set")
+        } else{
+            print("Text Color has been set before.")
+
+        }
+        
         startQuotes()
         
         // Do any additional setup after loading the view.
@@ -32,6 +44,47 @@ class ShowQuotesViewController: UIViewController {
     //The first time the show quote screen opens
     func startQuotes(){
         quoteLabel.text = "Everybody lies."
+        
+        var txtColor = defaults.array(forKey: "QuotesTextColor")
+        if(txtColor != nil){
+            print("Text Color has been set")
+
+        } else{
+            print("Text Color has not been set")
+            //Making an array with the digits for red color
+            var redColor: [Double] = []
+            redColor.append(207/255) //r
+            redColor.append(84/255) //g
+            redColor.append(77/255) //b
+            
+            defaults.set(redColor, forKey: "QuotesTextColor")
+            txtColor = defaults.array(forKey: "QuotesTextColor")
+            
+            print(txtColor![0])
+            print(txtColor![1])
+            print(txtColor![2])
+            //print(redColor[0])
+        }
+        
+        //Getting user's color preference from userdefaults
+        //let txtColor = defaults.array(forKey: "QuotesTextColor")
+        var r = 0.8117647058823529
+        r = txtColor?[0] as! Double
+        var g = 0.3294117647058823
+        g = txtColor?[1] as! Double
+        var b = 0.3019607843137255
+        b = txtColor?[2] as! Double
+        
+        print("R is \(r)")
+        print("G is \(g)")
+        print("B is \(b)")
+        
+        //Setting text color to user's preference
+        quoteLabel.textColor =
+        UIColor(red: r, green: g, blue: b, alpha: 1)
+        authorLabel.textColor =
+        UIColor(red: r, green: g, blue: b, alpha: 1)
+        
     }
     
     // TODO: Possible delegate
