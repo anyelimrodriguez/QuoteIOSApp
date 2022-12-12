@@ -10,7 +10,6 @@ import UIKit
 class RandomAdviceViewController: UIViewController {
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var adviceLabel: UILabel!
-    //@IBOutlet var shareButton: UIBarButtonItem!
     
     var currentAdvice = ""
     var randomVal = 0
@@ -19,15 +18,86 @@ class RandomAdviceViewController: UIViewController {
         "Never break two laws at the same time because that’s how you get caught.","If you sleep until lunchtime, you can save your breakfast money.","If you’re gonna break the rules, only break one rule at a time.","Have more than you show, speak less than you know", "You can measure a person’s soul by how they treat service staff.", "If they talk shit about others to you, they’re probably talking shit about you to others. Stay away.", "Don’t shoot down an idea you can’t improve upon."]
     var adviceResults = [AdviceResult]()
     
+    //var defaults = UserPreferences.shared.defaults
+    //let defaults = UserDefaults.standard
+    
+    //let def = UserPreferences
     override func viewDidLoad() {
         super.viewDidLoad()
-        startAdvice()
+        
+        //var txtColor = defaults.array(forKey: "QuotesTextColor")
+        var txtColor = UserPreferences.shared.getQuoteTextColor()
+        
+        if(txtColor == nil){
+            print("Text Color has not been set")
+        } else{
+            print("Text Color has been set before.")
+
+        }
+        
+        getNewAdvice()
+        //defaults = UserPreferences.shared.defaults
+        //print("GETTING DEFAULTS")
+        
+        //let defaults = UserDefaults.standard
+        //var txtColor = defaults.array(forKey: "QuotesTextColor")
+        
+        //If the userDefaults for textColor has not been set, set it to red
+        if(txtColor != nil){
+            print("Text Color has been set")
+
+        } else{
+            print("Text Color has not been set")
+            //Making an array with the digits for red color
+            var redColor: [Double] = []
+            redColor.append(207/255) //r
+            redColor.append(84/255) //g
+            redColor.append(77/255) //b
+            
+            //defaults.set(redColor, forKey: "QuotesTextColor")
+            //txtColor = defaults.array(forKey: "QuotesTextColor")
+            
+            UserPreferences.shared.setQuoteTextColor(color: redColor)
+            txtColor = UserPreferences.shared.getQuoteTextColor()
+            
+           // print(txtColor![0])
+            //print(txtColor![1])
+            //print(txtColor![2])
+            //print(redColor[0])
+        }
+        print("Current Text Color is:")
+        //print(txtColor![0])
+        //print(txtColor![1])
+        //print(txtColor![2])
         // Do any additional setup after loading the view.
+        
+        startAdvice()
     }
     
     //The first time the advice screen opens
     func startAdvice(){
-        adviceLabel.text = "It's okay to not be okay all the time."
+        randomVal = Int.random(in: 0...advice.count-1)
+        adviceLabel.moveInTransition(0.3)
+        adviceLabel.text = advice[randomVal]
+        
+        //Getting user's color preference from userdefaults
+        //let txtColor = defaults.array(forKey: "QuotesTextColor")
+        let txtColor = UserPreferences.shared.getQuoteTextColor()
+        
+        var r = 0.8117647058823529
+        r = txtColor?[0] as! Double
+        var g = 0.3294117647058823
+        g = txtColor?[1] as! Double
+        var b = 0.3019607843137255
+        b = txtColor?[2] as! Double
+        
+        print("R is \(r)")
+        print("G is \(g)")
+        print("B is \(b)")
+        
+        //Setting text color to user's preference
+        adviceLabel.textColor =
+        UIColor(red: r, green: g, blue: b, alpha: 1)
     }
     
     /*func updateAdvice(){
@@ -65,7 +135,6 @@ class RandomAdviceViewController: UIViewController {
                 //self.isLoading = false
                 //self.tableView.reloadData()
               }
-                
               return
             }
           } else {
@@ -74,18 +143,24 @@ class RandomAdviceViewController: UIViewController {
         }
         // 5
         dataTask.resume()
+        
+        //If not able to retrieve quote from API, use my array of advice
         if(currentAPIAdvice.advice=="")
         {
             randomVal = Int.random(in: 0...advice.count-1)
+            adviceLabel.revealTransition(0.3)
             adviceLabel.text = advice[randomVal]
         }
         else
         {
+            adviceLabel.revealTransition(0.3)
+            //adviceLabel.moveInTransition(0.3)
             adviceLabel.text=currentAPIAdvice.advice!
             print(currentAPIAdvice.advice!)
         }
     }
     
+    //MARK: Copy and Share Tools
     /*This method allows user to share the text in advice label using the activity view controller.
      ActivityView controller is the pop up that gives you options to share
     */
@@ -111,24 +186,24 @@ class RandomAdviceViewController: UIViewController {
     }
     
     func performAPIRequest(with url: URL) -> Data? {
-      do {
-       return try Data(contentsOf: url)
-      } catch {
-       print("Download Error: \(error.localizedDescription)")
-    return nil
+        do {
+            return try Data(contentsOf: url)
+        } catch {
+            print("Download Error: \(error.localizedDescription)")
+            return nil
         }
     }
     
-  func parse(data: Data) -> AdviceResult? {
-    do {
-      let decoder = JSONDecoder()
-      let result = try decoder.decode(
-        ResultSlip.self, from: data)
-        return result.slip
-    } catch {
-      print("JSON Error: \(error)")
-      return nil }
-  }
+    func parse(data: Data) -> AdviceResult? {
+        do {
+            let decoder = JSONDecoder()
+            let result = try decoder.decode(
+                ResultSlip.self, from: data)
+            return result.slip
+        } catch {
+            print("JSON Error: \(error)")
+            return nil }
+    }
     
     
     
