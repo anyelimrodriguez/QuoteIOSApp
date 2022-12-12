@@ -12,6 +12,7 @@
 		63657B9B2943AAC6007821E8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63657B9A2943AAC6007821E8 /* SettingsTableViewController.swift */; };
 		63657B9D2943B49E007821E8 /* TextColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63657B9C2943B49E007821E8 /* TextColorViewController.swift */; };
 		63657B9F2943BB5F007821E8 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63657B9E2943BB5F007821E8 /* UserPreferences.swift */; };
+		63657BA12946A8DF007821E8 /* StringReplaceChars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63657BA02946A8DF007821E8 /* StringReplaceChars.swift */; };
 		639962332922F5DB00832058 /* MovieCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639962322922F5DB00832058 /* MovieCategoriesViewController.swift */; };
 		63CC772E28F4C32200CC0B49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC772D28F4C32200CC0B49 /* AppDelegate.swift */; };
 		63CC773028F4C32200CC0B49 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC772F28F4C32200CC0B49 /* SceneDelegate.swift */; };
@@ -29,6 +30,7 @@
 		63657B9A2943AAC6007821E8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		63657B9C2943B49E007821E8 /* TextColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextColorViewController.swift; sourceTree = "<group>"; };
 		63657B9E2943BB5F007821E8 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		63657BA02946A8DF007821E8 /* StringReplaceChars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringReplaceChars.swift; sourceTree = "<group>"; };
 		639962322922F5DB00832058 /* MovieCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCategoriesViewController.swift; sourceTree = "<group>"; };
 		63CC772A28F4C32200CC0B49 /* QuotesIOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuotesIOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63CC772D28F4C32200CC0B49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				63657B9A2943AAC6007821E8 /* SettingsTableViewController.swift */,
 				63657B9C2943B49E007821E8 /* TextColorViewController.swift */,
 				63657B9E2943BB5F007821E8 /* UserPreferences.swift */,
+				63657BA02946A8DF007821E8 /* StringReplaceChars.swift */,
 			);
 			path = QuotesApp;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				63CC773228F4C32200CC0B49 /* ViewController.swift in Sources */,
 				63CC772E28F4C32200CC0B49 /* AppDelegate.swift in Sources */,
 				634550D3293F0039004A5E49 /* ShowQuotesViewController.swift in Sources */,
+				63657BA12946A8DF007821E8 /* StringReplaceChars.swift in Sources */,
 				63ED3737292C2158008198A7 /* AdviceResult.swift in Sources */,
 				63CC773028F4C32200CC0B49 /* SceneDelegate.swift in Sources */,
 				634550D1293EFAD8004A5E49 /* ShowQuoteResult.swift in Sources */,

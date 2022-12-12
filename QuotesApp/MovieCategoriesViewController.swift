@@ -60,8 +60,9 @@ class MovieCategoriesViewController: UITableViewController {
         {
             print(showTitles.count)
             let currentShowTitle = showTitles[indexPath.row]
-            label.text = currentShowTitle.capitalized
-            
+            //label.text = currentShowTitle.capitalized
+            //print(currentShowTitle.replaceWith(toBeReplaced: "_", replacingWith: " "))
+            label.text = currentShowTitle.replaceWith(toBeReplaced: "_", replacingWith: " ").capitalized
             label.adjustsFontSizeToFitWidth = true
             label.font = UIFont.boldSystemFont(ofSize: 22)
             label.textColor = UIColor(red: 182/255, green: 47/255, blue: 54/255, alpha: 1)
@@ -76,6 +77,7 @@ class MovieCategoriesViewController: UITableViewController {
         }
         return cell
     }
+    
     //TODO: Delegate implementation?
     override func tableView(
       _ tableView: UITableView,
