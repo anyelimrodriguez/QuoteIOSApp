@@ -14,17 +14,19 @@ class TextColorViewController: UIViewController {
     @IBOutlet var yellowTextLabel: UILabel!
     @IBOutlet var greenTextLabel: UILabel!
     
-    let defaults = UserPreferences.shared.defaults
+    //let defaults = UserPreferences.shared.defaults
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let txtColor = defaults.array(forKey: "QuotesTextColor")
+        //let txtColor = defaults.array(forKey: "QuotesTextColor")
+        let txtColor = UserPreferences.shared.getQuoteTextColor()
+        
         
         if(txtColor == nil){
-            print("Text Color has not been set")
+            print("TxtColorView: Text Color has not been set")
         } else{
-            print("Text Color has been set before.")
+            print("TxtColorView: Text Color has been set before.")
 
         }
 
@@ -50,7 +52,7 @@ class TextColorViewController: UIViewController {
         //let defaults = UserDefaults.standard
         //defaults.set("", forKey: "QuotesTextColor")
         
-        var txtColor = defaults.array(forKey: "QuotesTextColor")
+        var txtColor = UserPreferences.shared.getQuoteTextColor()
         
         //Making an array with the digits for red color
         var redColor: [Double] = []
@@ -73,20 +75,21 @@ class TextColorViewController: UIViewController {
         } else{
             print("Text Color has been set before.")
             print("Current Color is:")
-            print("R \(txtColor![0])")
+           /* print("R \(txtColor![0])")
             print("G \(txtColor![1])")
-            print("B \(txtColor![2])")
+            print("B \(txtColor![2])")*/
             print("Just changed it to....")
 
         }
         
-        defaults.set(redColor, forKey: "QuotesTextColor")
-        txtColor = defaults.array(forKey: "QuotesTextColor")
+        //defaults.set(redColor, forKey: "QuotesTextColor")
+        UserPreferences.shared.setQuoteTextColor(color:redColor)
+        txtColor = UserPreferences.shared.getQuoteTextColor()
         
         print("Current Text Color is:")
-        print(txtColor![0])
+        /*print(txtColor![0])
         print(txtColor![1])
-        print(txtColor![2])
+        print(txtColor![2])*/
         
         //label.textColor = UIColor(red: 182/255, green: 47/255, blue: 54/255, alpha: 1)
     }
@@ -108,7 +111,7 @@ class TextColorViewController: UIViewController {
         print("B \(blueColor[2])")*/
         
         //Getting the text color
-        var txtColor = defaults.array(forKey: "QuotesTextColor")
+        var txtColor = UserPreferences.shared.getQuoteTextColor()
         
         if(txtColor == nil){
             print("Text Color has not been set")
@@ -127,8 +130,9 @@ class TextColorViewController: UIViewController {
 
         }
         
-        defaults.set(blueColor, forKey: "QuotesTextColor")
-        txtColor = defaults.array(forKey: "QuotesTextColor")
+        //defaults.set(blueColor, forKey: "QuotesTextColor")
+        UserPreferences.shared.setQuoteTextColor(color:blueColor)
+        txtColor = UserPreferences.shared.getQuoteTextColor()
         
         /*print("Current Text Color is:")
         print(txtColor![0])
@@ -155,7 +159,7 @@ class TextColorViewController: UIViewController {
         print("B \(blueColor[2])")*/
         
         //Getting the text color
-        var txtColor = defaults.array(forKey: "QuotesTextColor")
+        var txtColor = UserPreferences.shared.getQuoteTextColor()
         
         if(txtColor == nil){
             print("Text Color has not been set")
@@ -164,8 +168,9 @@ class TextColorViewController: UIViewController {
 
         }
         
-        defaults.set(yellowColor, forKey: "QuotesTextColor")
-        txtColor = defaults.array(forKey: "QuotesTextColor")
+        //defaults.set(yellowColor, forKey: "QuotesTextColor")
+        UserPreferences.shared.setQuoteTextColor(color:yellowColor)
+        txtColor = UserPreferences.shared.getQuoteTextColor()
         
         /*print("Current Text Color is:")
         print(txtColor![0])
@@ -186,7 +191,7 @@ class TextColorViewController: UIViewController {
         greenColor.append(77/255) //b
         
         //Getting the text color
-        var txtColor = defaults.array(forKey: "QuotesTextColor")
+        var txtColor = UserPreferences.shared.getQuoteTextColor()
         
         if(txtColor == nil){
             print("Text Color has not been set")
@@ -195,8 +200,9 @@ class TextColorViewController: UIViewController {
 
         }
         
-        defaults.set(greenColor, forKey: "QuotesTextColor")
-        txtColor = defaults.array(forKey: "QuotesTextColor")
+        UserPreferences.shared.setQuoteTextColor(color:greenColor)
+        //defaults.set(greenColor, forKey: "QuotesTextColor")
+        txtColor = UserPreferences.shared.getQuoteTextColor()
         
     }
     /*

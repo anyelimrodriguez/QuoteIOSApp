@@ -18,14 +18,15 @@ class RandomAdviceViewController: UIViewController {
         "Never break two laws at the same time because that’s how you get caught.","If you sleep until lunchtime, you can save your breakfast money.","If you’re gonna break the rules, only break one rule at a time.","Have more than you show, speak less than you know", "You can measure a person’s soul by how they treat service staff.", "If they talk shit about others to you, they’re probably talking shit about you to others. Stay away.", "Don’t shoot down an idea you can’t improve upon."]
     var adviceResults = [AdviceResult]()
     
-    var defaults = UserPreferences.shared.defaults
+    //var defaults = UserPreferences.shared.defaults
     //let defaults = UserDefaults.standard
     
     //let def = UserPreferences
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var txtColor = defaults.array(forKey: "QuotesTextColor")
+        //var txtColor = defaults.array(forKey: "QuotesTextColor")
+        var txtColor = UserPreferences.shared.getQuoteTextColor()
         
         if(txtColor == nil){
             print("Text Color has not been set")
@@ -35,7 +36,7 @@ class RandomAdviceViewController: UIViewController {
         }
         
         getNewAdvice()
-        defaults = UserPreferences.shared.defaults
+        //defaults = UserPreferences.shared.defaults
         //print("GETTING DEFAULTS")
         
         //let defaults = UserDefaults.standard
@@ -53,18 +54,21 @@ class RandomAdviceViewController: UIViewController {
             redColor.append(84/255) //g
             redColor.append(77/255) //b
             
-            defaults.set(redColor, forKey: "QuotesTextColor")
-            txtColor = defaults.array(forKey: "QuotesTextColor")
+            //defaults.set(redColor, forKey: "QuotesTextColor")
+            //txtColor = defaults.array(forKey: "QuotesTextColor")
             
-            print(txtColor![0])
-            print(txtColor![1])
-            print(txtColor![2])
+            UserPreferences.shared.setQuoteTextColor(color: redColor)
+            txtColor = UserPreferences.shared.getQuoteTextColor()
+            
+           // print(txtColor![0])
+            //print(txtColor![1])
+            //print(txtColor![2])
             //print(redColor[0])
         }
         print("Current Text Color is:")
-        print(txtColor![0])
-        print(txtColor![1])
-        print(txtColor![2])
+        //print(txtColor![0])
+        //print(txtColor![1])
+        //print(txtColor![2])
         // Do any additional setup after loading the view.
         
         startAdvice()
@@ -76,7 +80,9 @@ class RandomAdviceViewController: UIViewController {
         adviceLabel.text = advice[randomVal]
         
         //Getting user's color preference from userdefaults
-        let txtColor = defaults.array(forKey: "QuotesTextColor")
+        //let txtColor = defaults.array(forKey: "QuotesTextColor")
+        let txtColor = UserPreferences.shared.getQuoteTextColor()
+        
         var r = 0.8117647058823529
         r = txtColor?[0] as! Double
         var g = 0.3294117647058823

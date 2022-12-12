@@ -3,7 +3,8 @@
 //  QuotesIOSApp
 //
 //  Created by Anyeli on 12/5/22.
-//
+// Resources: Used https://www.programiz.com/swift-programming/singleton
+// https://medium.com/swlh/how-to-handle-userdefaults-in-swift-83e1ded01a4d
 
 import UIKit
 
@@ -18,7 +19,7 @@ class ShowQuotesViewController: UIViewController {
     
     var queryParam = ""
     
-    var defaults = UserPreferences.shared.defaults
+    //var defaults = UserPreferences.shared.defaults
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,8 @@ class ShowQuotesViewController: UIViewController {
         
         getNewQuote()
         
-        let txtColor = defaults.array(forKey: "QuotesTextColor")
+        //var txtColor = defaults.array(forKey: "QuotesTextColor")
+        let txtColor = UserPreferences.shared.getQuoteTextColor()
         
         if(txtColor == nil){
             print("Text Color has not been set")
@@ -45,7 +47,7 @@ class ShowQuotesViewController: UIViewController {
     func startQuotes(){
         quoteLabel.text = "Everybody lies."
         
-        var txtColor = defaults.array(forKey: "QuotesTextColor")
+        var txtColor = UserPreferences.shared.getQuoteTextColor()
         if(txtColor != nil){
             print("Text Color has been set")
 
@@ -57,12 +59,14 @@ class ShowQuotesViewController: UIViewController {
             redColor.append(84/255) //g
             redColor.append(77/255) //b
             
-            defaults.set(redColor, forKey: "QuotesTextColor")
-            txtColor = defaults.array(forKey: "QuotesTextColor")
+            //defaults.set(redColor, forKey: "QuotesTextColor")
+            //txtColor = defaults.array(forKey: "QuotesTextColor")
+            UserPreferences.shared.setQuoteTextColor(color: redColor)
+            txtColor = UserPreferences.shared.getQuoteTextColor()
             
-            print(txtColor![0])
-            print(txtColor![1])
-            print(txtColor![2])
+           // print(txtColor![0])
+           // print(txtColor![1])
+           // print(txtColor![2])
             //print(redColor[0])
         }
         

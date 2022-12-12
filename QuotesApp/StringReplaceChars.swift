@@ -10,7 +10,9 @@ import Foundation
     - toBeReplaced is the char that is going to be replaced
     - replacingWith is the char that the prev char will be replaced with
     Returns the original string if it does not contain the char toBeReplaced
-    Returns new string with the char replaced
+    Returns new string with the char replaced.
+ 
+   Resource Utilized to understand string methods: https://www.cocoaphile.com/posts/string-slicing-in-swift
 */
 extension String {
     func replaceWith(toBeReplaced: Character, replacingWith: Character)-> String {
