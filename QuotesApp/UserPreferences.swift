@@ -8,9 +8,10 @@
 import Foundation
 class UserPreferences
 {
+    //make it private
+    //hide init -> private init
+    //have methods 
     let defaults = UserDefaults.standard
-  
-    //private let keyIntExample = "intExample"
   
     /*var QuoteTxtColor = {
         set {

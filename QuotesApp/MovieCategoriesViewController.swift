@@ -61,6 +61,7 @@ class MovieCategoriesViewController: UITableViewController {
             print(showTitles.count)
             let currentShowTitle = showTitles[indexPath.row]
             label.text = currentShowTitle.capitalized
+            
             label.adjustsFontSizeToFitWidth = true
             label.font = UIFont.boldSystemFont(ofSize: 22)
             label.textColor = UIColor(red: 182/255, green: 47/255, blue: 54/255, alpha: 1)

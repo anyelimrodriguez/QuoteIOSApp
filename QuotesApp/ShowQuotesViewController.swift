@@ -27,7 +27,7 @@ class ShowQuotesViewController: UIViewController {
         
         getNewQuote()
         
-        var txtColor = defaults.array(forKey: "QuotesTextColor")
+        let txtColor = defaults.array(forKey: "QuotesTextColor")
         
         if(txtColor == nil){
             print("Text Color has not been set")
