@@ -77,6 +77,7 @@ class RandomAdviceViewController: UIViewController {
     //The first time the advice screen opens
     func startAdvice(){
         randomVal = Int.random(in: 0...advice.count-1)
+        adviceLabel.moveInTransition(0.3)
         adviceLabel.text = advice[randomVal]
         
         //Getting user's color preference from userdefaults
@@ -147,10 +148,13 @@ class RandomAdviceViewController: UIViewController {
         if(currentAPIAdvice.advice=="")
         {
             randomVal = Int.random(in: 0...advice.count-1)
+            adviceLabel.revealTransition(0.3)
             adviceLabel.text = advice[randomVal]
         }
         else
         {
+            adviceLabel.revealTransition(0.3)
+            //adviceLabel.moveInTransition(0.3)
             adviceLabel.text=currentAPIAdvice.advice!
             print(currentAPIAdvice.advice!)
         }
@@ -200,6 +204,8 @@ class RandomAdviceViewController: UIViewController {
             print("JSON Error: \(error)")
             return nil }
     }
+    
+    
     
     /*
     // MARK: - Navigation
