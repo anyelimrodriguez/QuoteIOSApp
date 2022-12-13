@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When you don’t know what quote to post...." lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRH-nu-cuZ">
-                                <rect key="frame" x="48" y="168" width="296" height="138"/>
+                                <rect key="frame" x="48" y="358" width="297" height="136.33333333333337"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
                                 <color key="textColor" red="0.71372550729999995" green="0.1843137443" blue="0.2117646933" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -26,10 +26,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="YRH-nu-cuZ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="IIS-4g-noQ"/>
                             <constraint firstItem="YRH-nu-cuZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="48" id="R4H-wU-5QF"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YRH-nu-cuZ" secondAttribute="bottom" constant="512" id="T4q-RB-CWA"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YRH-nu-cuZ" secondAttribute="trailing" constant="49" id="heu-Mz-b8F"/>
-                            <constraint firstItem="YRH-nu-cuZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="109" id="zbx-dk-G4W"/>
+                            <constraint firstItem="YRH-nu-cuZ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="o3k-Sa-9Of"/>
                         </constraints>
                     </view>
                 </viewController>

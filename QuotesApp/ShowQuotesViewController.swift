@@ -2,9 +2,8 @@
 //  ShowQuotesViewController.swift
 //  QuotesIOSApp
 //
-//  Created by Anyeli on 12/5/22.
-// Resources: Used https://www.programiz.com/swift-programming/singleton
-// https://medium.com/swlh/how-to-handle-userdefaults-in-swift-83e1ded01a4d
+//  
+
 
 import UIKit
 
@@ -45,7 +44,10 @@ class ShowQuotesViewController: UIViewController {
     
     //The first time the show quote screen opens
     func startQuotes(){
+        quoteLabel.moveInTransition(0.3)
         quoteLabel.text = "Everybody lies."
+        authorLabel.moveInTransition(0.3)
+        authorLabel.text = "House"
         
         var txtColor = UserPreferences.shared.getQuoteTextColor()
         if(txtColor != nil){
@@ -132,13 +134,17 @@ class ShowQuotesViewController: UIViewController {
         dataTask.resume()
         if(currentAPIQuote.quote==nil||currentAPIQuote.quote=="")
         {
+            quoteLabel.revealTransition(0.3)
+            authorLabel.revealTransition(0.3)
             print("EMPTY QUOTE")
             quoteLabel.text = "Everybody Lies."
-            authorLabel.text = "House"
+            authorLabel.text = "-House"
         }
         else
         {
             //currentQuote = "\(currentAPIQuote.quote)"
+            quoteLabel.revealTransition(0.3)
+            authorLabel.revealTransition(0.3)
             quoteLabel.text="\""+currentAPIQuote.quote!+"\""
             authorLabel.text="-"+currentAPIQuote.author!
             //print(currentAPIQuote[0].quote!)
