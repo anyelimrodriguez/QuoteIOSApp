@@ -2,7 +2,7 @@
 //  TextColorViewController.swift
 //  QuotesIOSApp
 //
-//  Created by Anyeli on 12/9/22.
+//  Resource: https://stackoverflow.com/questions/45726843/how-to-detect-if-ui-label-was-tapped
 //
 
 import UIKit
